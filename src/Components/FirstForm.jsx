@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { InboxIcon } from '@heroicons/react/24/outline';
+import { Link } from 'react-router';
 
 const FirstForm = () => {
-    
+    const [MeansOfIdentification, setMeansOfIdentification] = useState('')
 
-    
     return (
         <>
             <div className=' '>
@@ -70,7 +70,7 @@ const FirstForm = () => {
                     <div className='my-2 py-2'>
                         <legend className='font-bold my-2'>Means of Identification</legend>
                         <div>
-                            <select className='border border-[#BFBFBF] w-full p-2 rounded-lg outline-[#066AAB]'>
+                            <select className='border border-[#BFBFBF] w-full p-2 rounded outline-[#066AAB]'>
                                 <option value=" "> </option>
                                 <option value="NIN">NIN</option>
                                 <option value="Voter's Card">Voter's Card</option>
@@ -120,7 +120,7 @@ const FirstForm = () => {
                     </div>
                     <div className='my-2 py-2 flex flex-row space-x-2 items-center'>
                         <div>
-                            <Link to="/page2" className='bg-[#055589] text-white py-2 px-6 my-2 rounded'>Next</Link>
+                            <Link to="/page2" className='hover:bg-[#055589] bg-[#066AAB] text-white py-2 px-6 my-2 rounded'>Next</Link>
                         </div>
                         <div>
                             <p className='underline hover:underline-0 text-black font-thin'><a href="#">Save and Complete Later</a></p>
