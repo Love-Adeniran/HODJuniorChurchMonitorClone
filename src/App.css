@@ -5,7 +5,9 @@
   font-style: normal;
 }
 
-/* .firsttext{
-    font-size: 16px;
-} */
+.firsttext{
+    line-height: 1.1;
+    word-spacing: 1;
+    font-size: 1em;
+}
 

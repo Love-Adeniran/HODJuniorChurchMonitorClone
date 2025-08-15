@@ -2,7 +2,7 @@ import { InboxIcon } from '@heroicons/react/24/outline';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const SecondForm = () => {
+const SecondForm = ({ index, onClick }) => {
     const [NumOfChildren, setNumOfChildren] = useState()
     const [SelectedNumber, setSelectedNumber] = useState("")
     const [SelectedOption, setSelectedOption] = useState(" ")
@@ -189,10 +189,10 @@ const SecondForm = () => {
 
                     <div className='my-3 py-2 flex flex-row space-x-2 items-center'>
                         <div>
-                            <Link to="/" className='hover:bg-[#055589] bg-[#066AAB] text-white py-2 px-4 my-2 rounded'>Previous</Link>
+                            <button onClick={() => onClick(index - 1)} className='hover:bg-[#055589] bg-[#066AAB] text-white py-2 px-6 my-2 rounded'>Previous</button>
                         </div>
                         <div>
-                            <Link to="/page3" className='hover:bg-[#055589] bg-[#066AAB] text-white py-2 px-6 my-2 rounded'>Next</Link>
+                            <button onClick={() => onClick(index + 1)} className='hover:bg-[#055589] bg-[#066AAB] text-white py-2 px-6 my-2 rounded'>Next</button>
                         </div>
                         <div>
                             <p className='underline hover:underline-0 text-black font-thin'><a href="#">Save and Complete Later</a></p>

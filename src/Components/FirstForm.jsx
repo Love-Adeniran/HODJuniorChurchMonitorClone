@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { InboxIcon } from '@heroicons/react/24/outline';
 import { Link } from 'react-router';
 
-const FirstForm = () => {
+const FirstForm = ({ index, onClick }) => {
     const [MeansOfIdentification, setMeansOfIdentification] = useState('')
 
     return (
@@ -83,19 +83,12 @@ const FirstForm = () => {
                         <div
                             // onDrop={handleDrop}
                             // onDragOver={handleDragOver}
-                            className="flex flex-col items-center justify-center border border-gray-300 rounded-md p-6 text-center cursor-pointer outline-[#066AAB ] transition "
-                        >
-                            <input
-                                type="file"
-                                accept="image/*"
+                            className="flex flex-col items-center justify-center border border-gray-300 rounded-md p-6 text-center cursor-pointer outline-[#066AAB ] transition ">
+                            <input type="file" accept="image/*"
                                 // onChange={handleFileChange}
-                                className="hidden"
-                                id="file-upload"
-                            />
+                                className="hidden" id="file-upload"/>
                             <label htmlFor="file-upload" className="cursor-pointer items-center justify-center flex flex-col">
                                 {/* Preview */}
-
-                                
                                 <InboxIcon className="h-20 w-8  text-[#aeadad] " />
                                 <p className="mt-2 text-gray-600">Click or drag a file to this area to upload</p>
                             </label>
@@ -104,6 +97,7 @@ const FirstForm = () => {
                         {/* Help text */}
                         <p className="text-sm text-gray-500 mt-2">A clear headshot Picture of Parent</p>
                     </div>
+
                     <div>
                         <legend className='font-bold my-2'>Address</legend>
                         <div className='pe-2'>
@@ -119,9 +113,10 @@ const FirstForm = () => {
                         </div>
                     </div>
                     <div className='my-2 py-2 flex flex-row space-x-2 items-center'>
-                        <div>
+                        {/* <div>
                             <Link to="/page2" className='hover:bg-[#055589] bg-[#066AAB] text-white py-2 px-6 my-2 rounded'>Next</Link>
-                        </div>
+                        </div> */}
+                        <button onClick={() => onClick(index + 1)} className='hover:bg-[#055589] bg-[#066AAB] text-white py-2 px-6 my-2 rounded'>Next</button>
                         <div>
                             <p className='underline hover:underline-0 text-black font-thin'><a href="#">Save and Complete Later</a></p>
                         </div>
