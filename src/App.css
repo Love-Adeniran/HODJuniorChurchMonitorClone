@@ -4,10 +4,18 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'MyFont-thin';
+  src: url('./assets/fonts/poppins.regular.ttf') format('truetype');
+  font-weight:lighter;
+  font-style: thin;
+}
 
 .firsttext{
-    line-height: 1.1;
-    word-spacing: 1;
-    font-size: 1em;
+    line-height: 1.2;
+    word-spacing: -0.2px;
+    /* font-size: 1em; */
+    letter-spacing: -0.8px;
+
 }
 

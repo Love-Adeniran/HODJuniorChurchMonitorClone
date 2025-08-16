@@ -1,6 +1,8 @@
 import { InboxIcon } from '@heroicons/react/24/outline';
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import React, { useState } from 'react';
+
 
 const SecondForm = ({ index, onClick }) => {
     const [NumOfChildren, setNumOfChildren] = useState()
@@ -11,7 +13,25 @@ const SecondForm = ({ index, onClick }) => {
     const [SelectedSpecRelationship, setSelectedSpecRelationship] = useState(" ")
     let ErrorMsg = ""
     let value
-
+    let formik = useFormik({
+        initialValues: {
+            numOfChildren: '',
+            children: []
+        },
+        validationSchema: Yup.object({
+            numOfChildren: Yup.number().required('Required'),
+            children: Yup.array().of(
+                Yup.object().shape({
+                    firstName: Yup.string().required('Required'),
+                    lastName: Yup.string().required('Required'),
+                    dob: Yup.date().required('Required')
+                })
+            )
+        }),
+        onSubmit: (values) => {
+            console.log(values);
+        }
+    });
     const handleNumChange = (e) => {
         setSelectedNumber(e.target.value);
         value = SelectedNumber;
