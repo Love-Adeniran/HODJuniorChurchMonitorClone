@@ -2,7 +2,7 @@ import { InboxIcon } from '@heroicons/react/24/outline'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import React, { useState } from 'react'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 
 const ThirdForm = () => {
     const [NumOfPeople, setNumOfPeople] = useState('')

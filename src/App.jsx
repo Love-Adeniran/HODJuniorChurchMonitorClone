@@ -8,15 +8,11 @@ import SecondForm from './Components/SecondForm'
 import ThirdForm from './Components/ThirdForm'
 import * as poppins from './assets/fonts/poppins.regular.ttf'
 import SavePage from './Components/SavePage'
+// import './assets/fonts/MyFont.ttf'
 
-// const Poppins = poppins({
-//     subsets: ['latin'],
-//     weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-// })
 
 function App() {
     const [activeTab, setActiveTab] = useState(0);
-    // const [TabIndex,setTabIndex] = useState(0)
 
     const ActivateTab = (index) => {
         setActiveTab(index);
@@ -41,12 +37,7 @@ function App() {
                 <ThirdForm  onNext={() => ActivateTab(activeTab + 1)} />
             ),
         },
-        // {
-        //     label: "Care Giver (All fields are required unless specified optional)",
-        //     content: (
-        //         <SavePage onNext={() => ActivateTab(activeTab + 1)} />
-        //     ),
-        // },
+
     ];
     return (
         <>
@@ -97,11 +88,11 @@ function App() {
                                             <div className="font-[MyFont] bg-white mx-2">
                                                 {tabs[activeTab].content}
                                             </div>
-                                            <BrowserRouter>
+                                            {/* <BrowserRouter> */}
                                                 <Routes>
                                                     <Route path="/save" element={<SavePage />} />
                                                 </Routes>
-                                            </BrowserRouter>
+                                            {/* </BrowserRouter> */}
                                         </div>
                                     </div>
                                 </div>

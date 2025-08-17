@@ -3,7 +3,7 @@ import { InboxIcon } from '@heroicons/react/24/outline';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Buttons from './Buttons';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const FirstForm = ({onNext}) => {
     const [MeansOfIdentification, setMeansOfIdentification] = useState('')
