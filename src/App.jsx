@@ -3,42 +3,13 @@ import './index.css'
 import './App.css'
 import logo from '../src/assets/images/hodlogo.webp'
 import { BrowserRouter, Route, Routes } from 'react-router'
-import FirstForm from './Components/FirstForm'
-import SecondForm from './Components/SecondForm'
-import ThirdForm from './Components/ThirdForm'
-import * as poppins from './assets/fonts/poppins.regular.ttf'
 import SavePage from './Components/SavePage'
+import TheForms from './Components/TheForms'
 // import './assets/fonts/MyFont.ttf'
 
 
 function App() {
-    const [activeTab, setActiveTab] = useState(0);
 
-    const ActivateTab = (index) => {
-        setActiveTab(index);
-    }
-
-    const tabs = [
-        {
-            label: "Parent Information (All fields are required unless specified optional)",
-            content: (
-                <FirstForm  onNext={() => ActivateTab(activeTab + 1)} />
-            ),
-        },
-        {
-            label: "Child's Information (All fields are required unless specified optional)",
-            content: (
-                <SecondForm onPrevious={() => ActivateTab(activeTab - 1)} onNext={() => ActivateTab(activeTab + 1)} />
-            ),
-        },
-        {
-            label: "Care Giver (All fields are required unless specified optional)",
-            content: (
-                <ThirdForm  onNext={() => ActivateTab(activeTab + 1)} />
-            ),
-        },
-
-    ];
     return (
         <>
             <div className='bg-[#D6B4B4] h-full w-full  py-30'>
@@ -55,45 +26,16 @@ function App() {
                                         <div className=''>
                                             <p className='font-bold font-[MyFont] md:text-3xl text-sm text-[#444444]'>Junior church Monitor</p>
                                             <div className='my-2'>
-                                                <p className=' text-md firsttext font-[MyFont]'>Dear Parent/Guardian, please do not register twice! To update your child's info reach out to the Tech Team via the link below: <a href="https://chat.whatsapp.com/BMuwF2ACLkdBTMxCLBB1pO" className='text-blue-700 firsttext underline underline-blue-700'> https://chat.whatsapp.com/BMuwF2ACLkdBTMxCLBB1pO</a></p>
+                                                <p className=' text-md firsttext font-[MyFont]'>Dear Parent/Guardian, please do not register twice! To update your child's info reach out to the Tech Team via the link below: <a href="https://chat.whatsapp.com/BMuwF2ACLkdBTMxCLBB1pO" className='text-[#2900EE] firsttext underline underline-blue-700'> https://chat.whatsapp.com/BMuwF2ACLkdBTMxCLBB1pO</a></p>
                                             </div>
                                             <div className='my-8 '>
                                                 <hr className='text-[#c0c0c0]' />
                                             </div>
                                         </div>
-                                        <div className="max-w-4xl mx-auto mt-8">
-                                            {/* Tabs */}
-                                            <div className="flex justify-between mt-8 pt-4">
-                                                {tabs.map((tab, index) => (
-                                                    <div key={index} className="flex flex-col items-center  w-1/3 cursor-pointer font-(--MyFont) firsttext ">
-                                                        {/* Red bar */}
-                                                        <div
-                                                            className={`w-full  h-1.5  sm:hidden md:block ${activeTab === index ? "bg-[#AB0505]" : "bg-gray-200 border-[#bebdbd]"}`}
-                                                        ></div>
-
-                                                        {/* Red triangle pointer */}
-                                                        {activeTab === index && (
-                                                            <div
-                                                                className=" sm:hidden md:block w-0 h-0 border-l-4 border-r-5 border-[#F2F2F2] border-t-5 border-l-transparent border-r-transparent border-t-[#AB0505]"
-                                                            ></div>
-                                                        )}
-
-                                                        {/* Tab label */}
-                                                        <p className="sm:hidden md:block text-center text-[#5b5b5b] text-md my-2 font-[MyFont] firsttext">{tab.label}</p>
-                                                    </div>
-                                                ))}
-                                            </div>
-
-                                            {/* Tab Content */}
-                                            <div className="font-[MyFont] bg-white mx-2">
-                                                {tabs[activeTab].content}
-                                            </div>
-                                            {/* <BrowserRouter> */}
-                                                <Routes>
-                                                    <Route path="/save" element={<SavePage />} />
-                                                </Routes>
-                                            {/* </BrowserRouter> */}
-                                        </div>
+                                        <Routes>
+                                            <Route path="/" element={<TheForms />} />,
+                                            <Route path="/save" element={<SavePage />} />
+                                        </Routes>
                                     </div>
                                 </div>
                             </div>

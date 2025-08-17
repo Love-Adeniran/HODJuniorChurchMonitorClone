@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { InboxIcon } from '@heroicons/react/24/outline';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import Buttons from './Buttons';
 import { Link } from 'react-router-dom';
 
 const FirstForm = ({onNext}) => {
@@ -50,6 +49,8 @@ const FirstForm = ({onNext}) => {
         // }),
         onSubmit: (values) => {
             console.log(values);
+            console.log(formik.errors);
+
             onNext();
         },
     });
@@ -192,7 +193,6 @@ const FirstForm = ({onNext}) => {
                         </div>
                     </div>
                     <div className='my-2 py-2 flex flex-row space-x-2 items-center'>
-                        {/* <Buttons index={index} onclick={onClick}/> */}
                         <button type='submit'   className='hover:bg-[#055589] bg-[#066AAB] text-white py-2 px-6 my-2 rounded'>Next</button>
                         <div>
                             <p className='underline hover:underline-0 text-black font-thin'><Link to="/save">Save and Complete Later</Link></p>

@@ -1,8 +1,8 @@
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { InboxIcon } from '@heroicons/react/24/outline';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 
 const SecondForm = ({ onPrevious, onNext }) => {
@@ -31,24 +31,44 @@ const SecondForm = ({ onPrevious, onNext }) => {
                 }
             ]
         },
-        validationSchema: Yup.object({
-            numOfChildren: Yup.number().required('Required'),
-            children: Yup.array().of(
-                Yup.object().shape({
-                    firstName: Yup.string().required('Required'),
-                    lastName: Yup.string().required('Required'),
-                    dob: Yup.date().required('Required'),
-                    ageGroup: Yup.string().required('Required'),
-                    gender: Yup.string().required('Required'),
-                    image: Yup.string(),
-                    relationship: Yup.string().required('Required'),
-                    specificRelationship: Yup.string().required('Required'),
-                    specialNeed: Yup.string()
-                })
-            )
-        }),
+        // validationSchema: Yup.object({
+        //     numOfChildren: Yup.number().required('Required'),
+        //     children: Yup.array().of(
+        //         Yup.object().shape({
+        //             firstName: Yup.string().required('Required'),
+        //             lastName: Yup.string().required('Required'),
+        //             dob: Yup.date().required('Required'),
+        //             ageGroup: Yup.string().required('Required'),
+        //             gender: Yup.string().required('Required'),
+        //             image: Yup.string(),
+        //             relationship: Yup.string().required('Required'),
+        //             parent: Yup.string().required('Required').when('relationship', {
+        //                 is:  'Parent',
+        //                 then: Yup.string().required('Required'),
+        //                 otherwise: Yup.string().notRequired()
+        //             }),
+        //             Guardian: Yup.string().required('Required').when('relationship', {
+        //                 is:  'Guardian',
+        //                 then: Yup.string().required('Required'),
+        //                 otherwise: Yup.string().notRequired()
+        //             }),
+        //             specificRelationship: Yup.string().required('Required'),
+        //             specialNeed: Yup.string()
+        //         })
+        //     )
+        // }),
         onSubmit: (values) => {
             console.log(values);
+            // for (let i = 0; i < values.numOfChildren; i++) {
+            //     if (!values.children[i].firstName || !values.children[i].lastName || !values.children[i].dobMonth || !values.children[i].dobDay || !values.children[i].dobYear || !values.children[i].ageGroup || !values.children[i].gender) {
+            //         ErrorMsg = "Please fill all required fields for each child.";
+            //         break;
+            //     }
+            // }
+            // if (ErrorMsg) {
+            //     console.log(ErrorMsg);
+            //     return;
+            // }
             localStorage.setItem('children', JSON.stringify(values.children));
             localStorage.setItem('numOfChildren', JSON.stringify(values.numOfChildren));
             onNext(); // Call the onNext function passed as a prop to move to the next step
@@ -132,7 +152,7 @@ const SecondForm = ({ onPrevious, onNext }) => {
                                         </div>
                                     </div>
                                     <div className='my-2  text-black'>
-                                        <legend className='font-bold my-2'>Upload Picture of Child {i + 1} <span className='text-red-700'>*</span></legend>
+                                        <legend className='font-bold my-2'>Upload Picture of Child {i + 1} </legend>
                                         <div
                                             className="flex flex-col items-center justify-center border border-gray-300 rounded-md p-6 text-center cursor-pointer outline-[#066AAB ] transition "
                                         >
@@ -141,8 +161,7 @@ const SecondForm = ({ onPrevious, onNext }) => {
                                                 accept="image/*"
                                                 className="hidden my-4"
                                                 id="file-upload"
-                                                names='image'
-                                                values={formik.values.image}
+                                                name='image'
                                                 onChange={formik.handleChange}
                                             />
                                             <label htmlFor="file-upload" className="cursor-pointer items-center justify-center flex flex-col">
@@ -165,7 +184,7 @@ const SecondForm = ({ onPrevious, onNext }) => {
                                         {/* <p className='text-red-500 text-sm'>{ErrorMsg}</p> */}
                                     </div>
 
-                                    {SelectedRelationShip == "Parent" && <div>
+                                    {SelectedRelationShip === "Parent" && <div>
                                         <div className='my-4  text-black'>
                                             <legend className=' font-black my-2'>Specify Relationship (Parent) for Child {i + 1} <span className='text-red-700'>*</span></legend>
                                             <div>
@@ -179,7 +198,7 @@ const SecondForm = ({ onPrevious, onNext }) => {
                                         </div>
                                     </div>}
                                     <div>
-                                        {SelectedRelationShip == "Guardian" && <div>
+                                        {SelectedRelationShip === "Guardian" && <div>
                                             <div className='my-4  text-black'>
                                                 <legend className=' font-black my-2'>Specify Relationship (Guardian) for Child {i + 1} <span className='text-red-700'>*</span></legend>
                                                 <div>
@@ -213,11 +232,12 @@ const SecondForm = ({ onPrevious, onNext }) => {
                     
 
                     <div className='my-3 py-2 flex flex-row space-x-2 items-center'>
+                        <p className='text-red-500'>{ErrorMsg}</p>
                         <div>
                             <button  onClick={() => onPrevious()} className='hover:bg-[#055589] bg-[#066AAB] text-white py-2 px-6 my-2 rounded'>Previous</button>
                         </div>
                         <div>
-                            <button type='submit' className='hover:bg-[#055589] bg-[#066AAB] text-white py-2 px-6 my-2 rounded'>Next</button>
+                            <button type='submit' onSubmit={formik.handleSubmit} className='hover:bg-[#055589] bg-[#066AAB] text-white py-2 px-6 my-2 rounded'>Next</button>
                         </div>
                         <div>
                             <p className='underline hover:underline-0 text-black font-thin'><Link to="/save">Save and Complete Later</Link></p>

@@ -25,22 +25,22 @@ const ThirdForm = () => {
                 
             ],
         },
-        // validationSchema: Yup.object({
-        //     numOfPeople: Yup.number().min(0).required('Required'),
-        //     caregivers: Yup.array().of(
-        //         Yup.object().shape({
-        //             firstName: Yup.string().required('Required'),
-        //             lastName: Yup.string().required('Required'),
-        //             email: Yup.string().email('Invalid email').required('Required'),
-        //             gender: Yup.string().required('Required'),
-        //             cgRole: Yup.string().required('Required'),
-        //             cgPrimaryPhone: Yup.string().required('Required'),
-        //             cgSecondaryPhone: Yup.string(),
-        //             cgPicture: Yup.string().required('Required'),
-        //             singleLineText: Yup.string(),
-        //         })
-        //     ),
-        // }),
+        validationSchema: Yup.object({
+            numOfPeople: Yup.number().min(0).required('Required'),
+            caregivers: Yup.array().of(
+                Yup.object().shape({
+                    firstName: Yup.string().required('Required'),
+                    lastName: Yup.string().required('Required'),
+                    email: Yup.string().email('Invalid email').required('Required'),
+                    gender: Yup.string().required('Required'),
+                    cgRole: Yup.string().required('Required'),
+                    cgPrimaryPhone: Yup.string().required('Required'),
+                    cgSecondaryPhone: Yup.string(),
+                    cgPicture: Yup.string().required('Required'),
+                    singleLineText: Yup.string(),
+                })
+            ),
+        }),
         onSubmit: (values) => {
             console.log(values);
             localStorage.setItem('caregivers', JSON.stringify(values.caregivers));
