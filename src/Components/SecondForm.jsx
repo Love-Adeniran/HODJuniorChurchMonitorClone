@@ -232,13 +232,15 @@ const SecondForm = ({ onPrevious, onNext }) => {
                         </>
 
 
-                        <div className='my-3 py-2 flex flex-row space-x-2 items-center'>
+                        <div className='my-3 py-2 flex md:flex-row flex-col space-x-2 items-center'>
                             <p className='text-red-500'>{ErrorMsg}</p>
-                            <div>
-                                <button onClick={() => onPrevious()} className='hover:bg-[#055589] bg-[#066AAB] text-white py-2 px-6 my-2 rounded'>Previous</button>
-                            </div>
-                            <div>
-                                <button type='submit' onSubmit={formik.handleSubmit} className='hover:bg-[#055589] bg-[#066AAB] text-white py-2 px-6 my-2 rounded'>Next</button>
+                            <div className='flex space-x-2'>
+                                <div>
+                                    <button onClick={() => onPrevious()} className='hover:bg-[#055589] bg-[#066AAB] text-white py-2 px-6 my-2 rounded'>Previous</button>
+                                </div>
+                                <div>
+                                    <button type='submit' onSubmit={formik.handleSubmit} className='hover:bg-[#055589] bg-[#066AAB] text-white py-2 px-6 my-2 rounded'>Next</button>
+                                </div>
                             </div>
                             <div>
                                 <p className='underline hover:underline-0 text-black font-thin'><Link to="/save">Save and Complete Later</Link></p>
