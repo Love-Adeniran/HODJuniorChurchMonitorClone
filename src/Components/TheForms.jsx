@@ -59,7 +59,7 @@ const TheForms = () => {
                     ))}
                 </div>
                 {/* Tab Content */}
-                <div className="font-[MyFont]">
+                <div className="font-[MyFont] max-w-sm p-6 md:p-0 mx-auto">
                     {tabs[activeTab].content}
                 </div>
             </div>
