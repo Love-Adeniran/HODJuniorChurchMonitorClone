@@ -77,33 +77,34 @@ const SecondForm = ({ onPrevious, onNext }) => {
 
     return (
         <>
-            <form onSubmit={formik.handleSubmit}>
-                <div>
-                    <div className='my-4 py-2 text-black'>
-                        <legend className=' font-black my-2'>How Many Children?</legend>
-                        <div>
-                            <select values={NumOfChildren} onChange={formik.handleChange} name='numOfChildren' className='border border-[#BFBFBF] w-full p-2 rounded outline-[#066AAB]' >
-                                <option value=" "> </option>
-                                <option value="1" >1</option>
-                                <option value="2" >2</option>
-                                <option value="3" >3</option>
-                                <option value="4" >4</option>
-                            </select>
+            <div className='form-wrapper'>
+                <form onSubmit={formik.handleSubmit}>
+                    <div>
+                        <div className='my-4 py-2 text-black'>
+                            <legend className=' font-black my-2'>How Many Children?</legend>
+                            <div>
+                                <select values={NumOfChildren} onChange={formik.handleChange} name='numOfChildren' className='border border-[#BFBFBF] w-full p-2 rounded outline-[#066AAB]' >
+                                    <option value=" "> </option>
+                                    <option value="1" >1</option>
+                                    <option value="2" >2</option>
+                                    <option value="3" >3</option>
+                                    <option value="4" >4</option>
+                                </select>
+                            </div>
+                            {/* <p className='text-red-500 text-sm'>{formik.errors}</p> */}
                         </div>
-                        {/* <p className='text-red-500 text-sm'>{formik.errors}</p> */}
-                    </div>
 
                         <>
-                            {Array.from({ length: formik.values.numOfChildren },(_, i) => (
+                            {Array.from({ length: formik.values.numOfChildren }, (_, i) => (
                                 <div className='text-black' key={i} >
                                     <div className=''>
                                         <legend className='font-bold'>Full Name of Child {i + 1} <span className='text-red-700'>*</span></legend>
                                         <div className='flex md:flex-row sm:flex-col  space-x-2 my-2 '>
                                             <div className=' w-[50%] py-2'>
-                                                <input type="text"  name='firstName' onChange={formik.handleChange} placeholder='First Name' className='border border-[#BFBFBF] w-full  p-2 rounded outline-[#066AAB]' />
+                                                <input type="text" name='firstName' onChange={formik.handleChange} placeholder='First Name' className='border border-[#BFBFBF] w-full  p-2 rounded outline-[#066AAB]' />
                                             </div>
                                             <div className=' w-[50%]  py-2'>
-                                                <input type="text" placeholder='Last Name'  name='lastName' onChange={formik.handleChange} className='border border-[#BFBFBF] w-full  p-2 rounded outline-[#066AAB]' />
+                                                <input type="text" placeholder='Last Name' name='lastName' onChange={formik.handleChange} className='border border-[#BFBFBF] w-full  p-2 rounded outline-[#066AAB]' />
                                             </div>
                                         </div>
 
@@ -229,22 +230,23 @@ const SecondForm = ({ onPrevious, onNext }) => {
                             )
                             }
                         </>
-                    
 
-                    <div className='my-3 py-2 flex flex-row space-x-2 items-center'>
-                        <p className='text-red-500'>{ErrorMsg}</p>
-                        <div>
-                            <button  onClick={() => onPrevious()} className='hover:bg-[#055589] bg-[#066AAB] text-white py-2 px-6 my-2 rounded'>Previous</button>
-                        </div>
-                        <div>
-                            <button type='submit' onSubmit={formik.handleSubmit} className='hover:bg-[#055589] bg-[#066AAB] text-white py-2 px-6 my-2 rounded'>Next</button>
-                        </div>
-                        <div>
-                            <p className='underline hover:underline-0 text-black font-thin'><Link to="/save">Save and Complete Later</Link></p>
+
+                        <div className='my-3 py-2 flex flex-row space-x-2 items-center'>
+                            <p className='text-red-500'>{ErrorMsg}</p>
+                            <div>
+                                <button onClick={() => onPrevious()} className='hover:bg-[#055589] bg-[#066AAB] text-white py-2 px-6 my-2 rounded'>Previous</button>
+                            </div>
+                            <div>
+                                <button type='submit' onSubmit={formik.handleSubmit} className='hover:bg-[#055589] bg-[#066AAB] text-white py-2 px-6 my-2 rounded'>Next</button>
+                            </div>
+                            <div>
+                                <p className='underline hover:underline-0 text-black font-thin'><Link to="/save">Save and Complete Later</Link></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
 
         </>
     )

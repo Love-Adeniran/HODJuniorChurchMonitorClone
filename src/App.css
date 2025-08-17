@@ -1,4 +1,6 @@
-
+*{
+    max-width: 100%;
+}
 @font-face {
   font-family: 'MyFont';
   src: url('./assets/fonts/poppins.regular.ttf') format('truetype');
@@ -12,10 +14,12 @@
   font-style: thin;
 }
 
+
 .firsttext{
     line-height: 1.2;
     word-spacing: -0.2px;
     letter-spacing: -0.8px;
+    word-wrap: break-word;
 }
 .savetext{
     word-spacing: -0.2px;
@@ -23,3 +27,19 @@
 
 }
 
+.form-wrapper {
+    padding: 0;
+  }
+.header-wrapper{
+    padding: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .form-wrapper {
+    padding: 1rem;
+  }
+  .header-wrapper{
+    padding: 0 1rem;
+}
+
+}

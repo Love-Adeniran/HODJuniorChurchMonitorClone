@@ -57,15 +57,15 @@ const FirstForm = ({onNext}) => {
     // console.log(formik);
     return (
         <>
-            <div className='mt-4 my-2 '>
-                <form onSubmit={formik.handleSubmit} className='@max-xs:px-4'>
+            <div className='mt-4 my-2 form-wrapper'>
+                <form onSubmit={formik.handleSubmit}>
                     <div className=''>
                         <legend className='font-bold'>Parent Full Name <span className='text-red-700 font-thin'>*</span></legend>
-                        <div className='flex md:flex-row sm:flex-col space-x-2 justify-between my-2 '>
+                        <div className='flex md:flex-row sm:flex-col space-x-2 justify-between my-2 w-[100%]'>
                             <div className=' w-[50%]  py-2'>
                                 <input type="text" placeholder='First Name' onChange={formik.handleChange} name='firstName' className='border border-[#BFBFBF] w-full  p-2 rounded outline-[#066AAB]' />
                             </div>
-                            <div className=' w-[50%]  py-2'>
+                            <div className='w-[50%] py-2'>
                                 <input type="text" placeholder='Last Name' name='lastName' className='border border-[#BFBFBF] w-full  p-2 rounded outline-[#066AAB]' />
                             </div>
                         </div>
