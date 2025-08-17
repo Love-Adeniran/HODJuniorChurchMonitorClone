@@ -7,6 +7,7 @@ import FirstForm from './Components/FirstForm'
 import SecondForm from './Components/SecondForm'
 import ThirdForm from './Components/ThirdForm'
 import * as poppins from './assets/fonts/poppins.regular.ttf'
+import SavePage from './Components/SavePage'
 
 // const Poppins = poppins({
 //     subsets: ['latin'],
@@ -25,21 +26,27 @@ function App() {
         {
             label: "Parent Information (All fields are required unless specified optional)",
             content: (
-                <FirstForm index={activeTab} onClick={ActivateTab} />
+                <FirstForm  onNext={() => ActivateTab(activeTab + 1)} />
             ),
         },
         {
             label: "Child's Information (All fields are required unless specified optional)",
             content: (
-                <SecondForm index={activeTab} onClick={ActivateTab} />
+                <SecondForm onPrevious={() => ActivateTab(activeTab - 1)} onNext={() => ActivateTab(activeTab + 1)} />
             ),
         },
         {
             label: "Care Giver (All fields are required unless specified optional)",
             content: (
-                <ThirdForm index={activeTab} onClick={ActivateTab} />
+                <ThirdForm  onNext={() => ActivateTab(activeTab + 1)} />
             ),
         },
+        // {
+        //     label: "Care Giver (All fields are required unless specified optional)",
+        //     content: (
+        //         <SavePage onNext={() => ActivateTab(activeTab + 1)} />
+        //     ),
+        // },
     ];
     return (
         <>
@@ -70,18 +77,18 @@ function App() {
                                                     <div key={index} className="flex flex-col items-center  w-1/3 cursor-pointer font-(--MyFont) firsttext ">
                                                         {/* Red bar */}
                                                         <div
-                                                            className={`w-full  h-1.5  ${activeTab === index ? "bg-[#AB0505]" : "bg-gray-200 border-[#bebdbd]"}`}
+                                                            className={`w-full  h-1.5  sm:hidden md:block ${activeTab === index ? "bg-[#AB0505]" : "bg-gray-200 border-[#bebdbd]"}`}
                                                         ></div>
 
                                                         {/* Red triangle pointer */}
                                                         {activeTab === index && (
                                                             <div
-                                                                className="w-0 h-0 border-l-4 border-r-5 border-[#F2F2F2] border-t-5 border-l-transparent border-r-transparent border-t-[#AB0505]"
+                                                                className=" sm:hidden md:block w-0 h-0 border-l-4 border-r-5 border-[#F2F2F2] border-t-5 border-l-transparent border-r-transparent border-t-[#AB0505]"
                                                             ></div>
                                                         )}
 
                                                         {/* Tab label */}
-                                                        <p className="text-center text-[#5b5b5b] text-md my-2 font-[MyFont] firsttext">{tab.label}</p>
+                                                        <p className="sm:hidden md:block text-center text-[#5b5b5b] text-md my-2 font-[MyFont] firsttext">{tab.label}</p>
                                                     </div>
                                                 ))}
                                             </div>
@@ -90,6 +97,11 @@ function App() {
                                             <div className="font-[MyFont] bg-white mx-2">
                                                 {tabs[activeTab].content}
                                             </div>
+                                            <BrowserRouter>
+                                                <Routes>
+                                                    <Route path="/save" element={<SavePage />} />
+                                                </Routes>
+                                            </BrowserRouter>
                                         </div>
                                     </div>
                                 </div>
