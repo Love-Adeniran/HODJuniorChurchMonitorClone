@@ -36,30 +36,30 @@ const TheForms = () => {
     ];
     return (
         <>
-            <div className="max-w-4xl mx-auto mt-8">
+            <div className=" max-w-4xl mx-auto mt-8 ">
                 {/* Tabs */}
-                <div className="flex justify-between mt-8 pt-4">
+                <div className="hidden md:flex justify-between mt-8 pt-4 ">
                     {tabs.map((tab, index) => (
-                        <div key={index} className="flex flex-col items-center  w-1/3 cursor-pointer font-(--MyFont) firsttext ">
+                        <div key={index} className="flex flex-col items-center w-1/3 cursor-pointer font-(--MyFont) firsttext ">
                             {/* Red bar */}
                             <div
-                                className={`w-full  h-1.5  sm:hidden md:block ${activeTab === index ? "bg-[#AB0505]" : "bg-gray-200 border-[#bebdbd]"}`}
+                                className={`w-full  h-1.5  ${activeTab === index ? "bg-[#AB0505]" : "bg-gray-200 border-[#bebdbd]"}`}
                             ></div>
 
                             {/* Red triangle pointer */}
                             {activeTab === index && (
                                 <div
-                                    className=" sm:hidden md:block w-0 h-0 border-l-4 border-r-5 border-[#F2F2F2] border-t-5 border-l-transparent border-r-transparent border-t-[#AB0505]"
+                                    className="w-0 h-0 border-l-4 border-r-5 border-[#F2F2F2] border-t-5 border-l-transparent border-r-transparent border-t-[#AB0505]"
                                 ></div>
                             )}
 
                             {/* Tab label */}
-                            <p className="sm:hidden md:block text-center text-[#5b5b5b] text-md my-2 font-[MyFont] firsttext">{tab.label}</p>
+                            <p className=" text-center text-[#5b5b5b] text-md my-2 font-[MyFont] firsttext">{tab.label}</p>
                         </div>
                     ))}
                 </div>
                 {/* Tab Content */}
-                <div className="font-[MyFont] bg-white mx-2">
+                <div className="font-[MyFont]">
                     {tabs[activeTab].content}
                 </div>
             </div>
