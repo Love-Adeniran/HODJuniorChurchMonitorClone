@@ -25,7 +25,11 @@
     word-spacing: -0.2px;
     letter-spacing: -0.5px;
 }
-
+.card {
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    /* background-color: rgba(17, 25, 40, 0.75); */
+}
 .form-wrapper {
     padding: 0;
   }

@@ -36,7 +36,7 @@ const TheForms = () => {
     ];
     return (
         <>
-            <div className=" max-w-4xl mx-auto mt-8 ">
+            <div className=" max-w-8xl  mt-8 ">
                 {/* Tabs */}
                 <div className="hidden md:flex justify-between mt-8 pt-4 ">
                     {tabs.map((tab, index) => (
